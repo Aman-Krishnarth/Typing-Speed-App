@@ -1,9 +1,7 @@
 const conf = require("../conf/conf")
 const mongoose = require("mongoose")
 
-
 function connectToDb(){
-    console.log(conf.mongoDbUrl)
     
     mongoose.connect(`${conf.mongoDbUrl}/practice`)
     .then((res)=>{
