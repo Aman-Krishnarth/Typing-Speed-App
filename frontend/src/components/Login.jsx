@@ -25,7 +25,7 @@ function Login() {
     console.log(email, password);
 
     await axios
-      .post("/user/loginUser", {
+      .post("https://typing-speed-app-backend.onrender.com/user/loginUser", {
         email,
         password,
       })

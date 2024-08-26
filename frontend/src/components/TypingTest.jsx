@@ -60,7 +60,7 @@ function TypingTest() {
 
       const makeReq = async () => {
         await axios
-          .post("/user/update", {
+          .post("https://typing-speed-app-backend.onrender.com/user/update", {
             token: localStorage.getItem("token"),
             wpm: WPM,
             cpm: CPM,

@@ -3,11 +3,13 @@ const connectToDb = require("./db/connectToDb");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken")
 const conf = require("./conf/conf")
+const cors = require("cors")
 
 console.log("");
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors())
 connectToDb();
 
 app.get("/", (req, res) => {

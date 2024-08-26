@@ -14,7 +14,7 @@ function Create() {
     e.preventDefault();
     console.log(username, email, password);
     await axios
-      .post("/user/createUser", {
+      .post("https://typing-speed-app-backend.onrender.com/user/createUser", {
         username,
         email,
         password,
