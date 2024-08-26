@@ -19,6 +19,6 @@ app.use("/user" ,require("./routes/loginUser"));
 app.use("/user", require("./routes/updateDetails"))
 app.use("/progress", require("./routes/progress"))
 
-app.listen(conf.port, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server running");
 });

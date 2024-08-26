@@ -12,7 +12,7 @@ function connectToDb(){
     })
     .catch((err)=>{
         console.log("ERROR IN DB CONNECTION");
-
+        console.log(err)
     })
 }
 
