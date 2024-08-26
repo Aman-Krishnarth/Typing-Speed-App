@@ -3,10 +3,9 @@ const mongoose = require("mongoose")
 
 function connectToDb(){
     
-    mongoose.connect(`${conf.mongoDbUrl}/practice`)
+    mongoose.connect(conf.mongoDbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((res)=>{
         console.log("DB CONNECTED");
-        // console.log(res)
     })
     .catch((err)=>{
         console.log("ERROR IN DB CONNECTION");
