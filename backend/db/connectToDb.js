@@ -1,9 +1,10 @@
 const conf = require("../conf/conf")
 const mongoose = require("mongoose")
+require("dotenv").config()
 
 function connectToDb(){
     
-    mongoose.connect(conf.mongoDbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+    mongoose.connect(process.env.MONGODB_URL)
     .then((res)=>{
         console.log("DB CONNECTED");
     })

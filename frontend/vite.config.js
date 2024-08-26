@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/user": "http://localhost:8080",
-      "/progress": "http://localhost:8080"
+      "/user": "https://typing-speed-app-backend.onrender.com/",
+      "/progress": "https://typing-speed-app-backend.onrender.com/"
     }
   }
 })
