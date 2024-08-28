@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserPlus } from "lucide-react";
+import { toast } from "react-toastify";
 
 function Create() {
   const navigate = useNavigate();
@@ -13,6 +14,18 @@ function Create() {
   async function handleSubmit(e) {
     e.preventDefault();
     console.log(username, email, password);
+
+    toast.warn("Trying to create user", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+
     await axios
       .post("https://typing-speed-app-backend.onrender.com/user/createUser", {
         username,
@@ -20,12 +33,37 @@ function Create() {
         password,
       })
       .then((res) => {
+        console.log("res mein hu");
         const { success, message } = res.data;
 
-        alert(message);
-
         if (success) {
-          navigate("/home");
+          toast.success(message, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+          
+		  setTimeout(()=>{
+			navigate("/")
+		  },1000)
+
+        } else {
+			toast.error(message, {
+				position: "top-right",
+				autoClose: 2000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "colored",
+			  });
+          console.log("success ke else mein hu");
         }
       });
 

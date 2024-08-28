@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { LogIn } from "lucide-react";
+import { toast } from "react-toastify";
 
 function Login() {
   const navigate = useNavigate();
@@ -24,6 +25,17 @@ function Login() {
     e.preventDefault();
     console.log(email, password);
 
+    toast.warn("Trying to login user", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+
     await axios
       .post("https://typing-speed-app-backend.onrender.com/user/loginUser", {
         email,
@@ -36,10 +48,32 @@ function Login() {
         const { success, message, token } = res.data;
 
         if (success) {
+          toast.success(message, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
           localStorage.setItem("token", token);
-          navigate("/home");
+
+          setTimeout(() => {
+            navigate("/home");
+          }, 1000);
         } else {
-          alert(message);
+          toast.error(message, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
         }
       })
       .catch((err) => {

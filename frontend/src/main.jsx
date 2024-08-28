@@ -8,40 +8,43 @@ import Login from "./components/Login.jsx";
 import Create from "./components/Create.jsx";
 import Progress from "./components/Progress.jsx";
 import Home from "./components/Home.jsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-		{
-			path: "",
-			element: <Login/>
-		},
-		{
-			path: "/home",
-			element: <Home/>,
-			children: [
-				{
-					path: "",
-					element: <TypingTest/>
-				},
-				{
-					path: "progress",
-					element: <Progress/>
-				}
-			]
-		},
-		{
-			path: "/create",
-			element: <Create/>
-		}
-	]
+      {
+        path: "",
+        element: <Login />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
+        children: [
+          {
+            path: "",
+            element: <TypingTest />,
+          },
+          {
+            path: "progress",
+            element: <Progress />,
+          },
+        ],
+      },
+      {
+        path: "/create",
+        element: <Create />,
+      },
+    ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router} />
+    <ToastContainer />
   </StrictMode>
 );
