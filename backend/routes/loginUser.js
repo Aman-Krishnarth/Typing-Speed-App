@@ -2,10 +2,11 @@ const express = require("express");
 const user = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const {loginValidation} = require("../middlewares/authValidation")
 
 const router = express.Router();
 
-router.post("/loginUser", async (req, res) => {
+router.post("/loginUser",loginValidation,async (req, res) => {
   console.log("request aayi hai in create user");
 
   const { email, password } = req.body;

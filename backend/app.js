@@ -22,5 +22,5 @@ app.use("/user", require("./routes/updateDetails"))
 app.use("/progress", require("./routes/progress"))
 
 app.listen(process.env.PORT, () => {
-  console.log("Server running");
+  console.log("Server running",process.env.PORT);
 });

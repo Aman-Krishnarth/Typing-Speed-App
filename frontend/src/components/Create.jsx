@@ -35,6 +35,7 @@ function Create() {
       .then((res) => {
         console.log("res mein hu");
         const { success, message } = res.data;
+        console.log();
 
         if (success) {
           toast.success(message, {
@@ -47,22 +48,21 @@ function Create() {
             progress: undefined,
             theme: "colored",
           });
-          
-		  setTimeout(()=>{
-			navigate("/")
-		  },1000)
 
+          setTimeout(() => {
+            navigate("/");
+          }, 1000);
         } else {
-			toast.error(message, {
-				position: "top-right",
-				autoClose: 2000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-				theme: "colored",
-			  });
+          toast.error(message, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
           console.log("success ke else mein hu");
         }
       });

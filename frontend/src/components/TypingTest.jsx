@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import randomParagraph from "random-paragraph";
+import { toast } from "react-toastify";
 
 function TypingTest() {
-  const [paragraph, setParagraph] = useState(
-    "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur accusamus eligendi nam unde, dolorem amet dolore voluptatum asperiores dignissimos cupiditate et consectetur, laboriosam voluptate voluptas ducimus consequuntur, maxime vel reiciendis qui sapiente in quis vero. Laudantium earum nam perspiciatis qui nemo autem ut incidunt necessitatibus, soluta quis id nihil cum?"
-  );
+  const [paragraph, setParagraph] = useState(randomParagraph({ sentences: 10 }));
 
-  const maxTime = 2;
+  console.log();
+
+  const maxTime = 30;
 
   const [timeLeft, setTimeLeft] = useState(maxTime);
   const [mistakes, setMistakes] = useState(0);
@@ -55,8 +57,9 @@ function TypingTest() {
         setWPM(wpm);
       }, 1000);
     } else if (timeLeft === 0) {
+      inputRef.current.blur();
       clearInterval(interval);
-      //   setIsTyping(false);
+      setIsTyping(false);
 
       const makeReq = async () => {
         await axios
@@ -68,14 +71,22 @@ function TypingTest() {
           .then((res) => {
             const { success, message } = res.data;
 
-            alert(message);
+            toast.success(message, {
+              position: "top-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
           })
           .catch((err) => {
             alert("update user mein dikkat aa rahi hai");
           });
       };
       makeReq();
-      handleReset();
     }
     return () => {
       clearInterval(interval);
@@ -153,7 +164,7 @@ function TypingTest() {
           <p className="text-lg font-semibold">WPM: {WPM}</p>
           <p className="text-lg font-semibold">CPM: {CPM}</p>
           <button
-            className="bg-red-500 px-5 py-2 rounded-md hover:scale-110 duration-300 ease-in-out "
+            className={`bg-red-500 px-5 py-2 rounded-md hover:scale-110 duration-300 ease-in-out ${isTyping? "" : "animate-bounce"}`}
             onClick={handleReset}
           >
             Try Again

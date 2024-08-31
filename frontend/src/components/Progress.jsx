@@ -9,7 +9,9 @@ function Progress() {
     console.log("progress section hai");
 
     axios
-      .post("https://typing-speed-app-backend.onrender.com/progress", { token: localStorage.getItem("token") })
+      .post("https://typing-speed-app-backend.onrender.com/progress", {
+        token: localStorage.getItem("token"),
+      })
       .then((res) => {
         console.log("get mein hu");
         console.log(res.data.wpm);
