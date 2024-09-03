@@ -20,7 +20,7 @@ function Create() {
       autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
-      pauseOnHover: true,
+      pauseOnHover: false,
       draggable: true,
       progress: undefined,
       theme: "colored",
@@ -43,7 +43,7 @@ function Create() {
             autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
-            pauseOnHover: true,
+            pauseOnHover: false,
             draggable: true,
             progress: undefined,
             theme: "colored",
@@ -79,17 +79,14 @@ function Create() {
 
   return (
     <div className=" h-lvh flex flex-col">
-      <h1
-        className=" 
-	font-bold text-3xl text-center py-6"
-      >
-        <UserPlus className="inline-block h-full w-[5%] mr-4" />
+      <h1 className="font-bold text-3xl text-center pt-10 flex justify-center items-center ">
+        <UserPlus className="inline-block mr-4  h-full w-[15%] sm:w-[10%] md:w-[7%] xl:w-[5%] text-white" />
 
-        <span className="text-zinc-400 inline-block text-3xl">Register</span>
+        <span className="text-white inline-block text-5xl">Login</span>
       </h1>
 
       <form className=" w-3/4 m-auto items-stretch rounded-md flex flex-col p-4 gap-2">
-        <div className="flex  justify-around items-center p-3 my-4 rounded-xl bg-[#313133]">
+        <div className="flex  justify-around items-center p-3 my-4 rounded-xl bg-[#121315]">
           <input
             type="text"
             id="username"
@@ -102,7 +99,7 @@ function Create() {
           />
         </div>
 
-        <div className="flex  justify-around items-center p-3 my-4 rounded-xl bg-[#313133]">
+        <div className="flex  justify-around items-center p-3 my-4 rounded-xl bg-[#121315]">
           <input
             type="email"
             id="email"
@@ -115,7 +112,7 @@ function Create() {
           />
         </div>
 
-        <div className="flex  justify-around items-center p-3 my-4 rounded-xl bg-[#313133]">
+        <div className="flex  justify-around items-center p-3 my-4 rounded-xl bg-[#121315]">
           <input
             type="password"
             id="password"
@@ -132,17 +129,16 @@ function Create() {
           type="submit"
           value="Create User"
           onClick={handleSubmit}
-          className="bg-[#313133] text-[#b3abbf] m-auto
-			p-4 rounded-xl hover:scale-110 duration-300 ease-in-out cursor-pointer text-3xl font-semibold hover:px-6 my-4
-		  "
+          className="bg-[#121315] text-white hover:text-green-500 m-auto
+			p-4 rounded-xl hover:scale-110 duration-300 ease-in-out cursor-pointer text-3xl font-semibold hover:px-6 my-4 text-wrap"
         />
 
         <input
           type="button"
           value="Already have an account? Login!"
           onClick={goToLogin}
-          className="bg-[#313133] text-green-600 m-auto
-			p-4 rounded-xl hover:scale-110 duration-300 ease-in-out cursor-pointer text-3xl font-semibold hover:px-6 my-4"
+          className="bg-[#121315] text-white hover:text-green-500
+			p-4 rounded-xl hover:scale-110 duration-300 ease-in-out cursor-pointer text-3xl font-semibold hover:px-6 my-4 mx-auto text-wrap"
         />
       </form>
     </div>

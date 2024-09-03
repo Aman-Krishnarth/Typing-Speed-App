@@ -86,23 +86,20 @@ function Login() {
 
   return (
     <div className=" h-lvh flex flex-col ">
-      <h1
-        className=" 
-	font-bold text-3xl text-center pt-10"
-      >
-        <LogIn className="inline-block mr-4  h-full w-[5%]" />
+      <h1 className="font-bold text-3xl text-center pt-10 flex justify-center items-center ">
+        <LogIn className="inline-block mr-4  h-full w-[15%] sm:w-[10%] md:w-[7%] xl:w-[5%] text-white" />
 
-        <span className="text-zinc-400 inline-block text-3xl">Login</span>
+        <span className="text-white inline-block text-5xl">Login</span>
       </h1>
       <form
         onSubmit={handleFormSubmit}
         className="w-3/4 m-auto items-stretch rounded-md flex flex-col p-4 gap-2"
       >
-        <div className="flex  justify-around items-center p-3 my-4 rounded-xl bg-[#313133]">
+        <div className="flex  justify-around items-center p-3 my-4 rounded-xl bg-[#121315]">
           <input
             type="text"
             placeholder="Tap to Add Email"
-            className="outline-none bg-transparent text-white text-2xl text-center bg-blue-400 w-full h-full"
+            className="outline-none bg-transparent text-white text-2xl text-center bg-blue-400 w-full h-full text-wrap"
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -110,7 +107,7 @@ function Login() {
           />
         </div>
 
-        <div className="flex  justify-around items-center p-3 my-4 rounded-xl bg-[#313133]">
+        <div className="flex  justify-around items-center p-3 my-4 rounded-xl bg-[#121315]">
           <input
             type="password"
             placeholder="Password"
@@ -125,15 +122,15 @@ function Login() {
         <input
           type="submit"
           value="Login"
-          className="bg-[#313133] text-[#b3abbf] m-auto
-			p-4 rounded-xl hover:scale-110 duration-300 ease-in-out cursor-pointer text-3xl font-semibold hover:px-6 my-4"
+          className="bg-[#121315] m-auto
+			p-4 rounded-xl hover:scale-110 duration-300 ease-in-out cursor-pointer text-3xl font-semibold hover:px-6 my-4 text-white hover:text-green-500"
         />
 
         <input
           type="button"
           value="Not a user? Register Now!"
-          className="bg-[#313133] text-red-700 m-auto
-			p-4 rounded-xl hover:scale-110 duration-300 ease-in-out cursor-pointer text-3xl font-semibold hover:px-6 my-4"
+          className=" text-white mx-auto my-7
+			p-4 rounded-xl hover:scale-110 duration-300 ease-in-out cursor-pointer text-3xl font-semibold hover:px-6 bg-[#121315] text-wrap hover:text-green-500"
           onClick={handleCreateUser}
         />
       </form>
