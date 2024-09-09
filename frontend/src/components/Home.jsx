@@ -6,8 +6,6 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("use effect mein hai home page ke");
-    console.log(Boolean(localStorage.getItem("token")));
     if (!localStorage.getItem("token")) {
       navigate("/");
     }

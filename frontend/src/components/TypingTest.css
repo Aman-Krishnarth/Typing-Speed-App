@@ -1,6 +1,6 @@
 /* Hide scrollbar for WebKit browsers */
 .textDiv {
-    overflow-y: auto; /* Keep the scrollable functionality */
+    overflow-y: hidden; /* Keep the scrollable functionality */
 }
 
 .textDiv::-webkit-scrollbar {

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import randomParagraph from "random-paragraph";
 import { toast } from "react-toastify";
-import "./TypingTest.css"
+import "./TypingTest.css";
 
 function TypingTest() {
   const [p, setP] = useState([
@@ -102,10 +102,6 @@ function TypingTest() {
   }, [isTyping, timeLeft]);
 
   function handleChange(e) {
-    console.log("change hua hai bro");
-    console.log(e.key);
-    // console.log(e.target.value)
-
     const characters = charRefs.current;
     let currentChar = charRefs.current[charIndex];
 
@@ -140,7 +136,7 @@ function TypingTest() {
         className=" rounded-md p-4 shadow-xl min-h-[60%] w-[90%] flex flex-col justify-around text-[#646669] "
         onClick={handleFocusClick}
       >
-        <div className="textDiv p-4 font-semibold h-48">
+        <div className="textDiv p-4 font-semibold h-48 ">
           <input
             type="text"
             className="opacity-0 -z-50 absolute"
@@ -170,7 +166,7 @@ function TypingTest() {
           })}
         </div>
 
-        <div className="flex justify-around  border-t-2 border-black pt-2 items-center text-white">
+        <div className="mt-4 flex justify-around  border-t-2 border-white pt-2 items-center text-white">
           <p className="text-xl font-semibold">Time Left : {timeLeft}</p>
           <p className="text-xl font-semibold">Mistakes: {mistakes}</p>
           <p className="text-xl font-semibold">WPM: {WPM}</p>

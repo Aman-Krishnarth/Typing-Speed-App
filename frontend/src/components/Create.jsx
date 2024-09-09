@@ -13,7 +13,6 @@ function Create() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(username, email, password);
 
     toast.warn("Trying to create user", {
       position: "top-right",
@@ -33,9 +32,7 @@ function Create() {
         password,
       })
       .then((res) => {
-        console.log("res mein hu");
         const { success, message } = res.data;
-        console.log();
 
         if (success) {
           toast.success(message, {
@@ -63,7 +60,6 @@ function Create() {
             progress: undefined,
             theme: "colored",
           });
-          console.log("success ke else mein hu");
         }
       });
 

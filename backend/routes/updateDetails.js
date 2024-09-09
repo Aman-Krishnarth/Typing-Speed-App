@@ -9,7 +9,6 @@ router.post("/update", async (req, res) => {
   const { token, wpm, cpm } = req.body;
 
   const data = jwt.verify(token, conf.jwtSecret);
-  console.log("id aayi hai verify ke baad".toUpperCase());
 
   const currentUser = await user.findOne({ _id: data.userId });
 

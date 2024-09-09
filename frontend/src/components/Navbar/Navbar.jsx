@@ -16,7 +16,6 @@ function Navbar() {
   ]);
 
   function handleLogout() {
-    console.log("handle logout hai");
     localStorage.setItem("token", "");
     navigate("/");
   }

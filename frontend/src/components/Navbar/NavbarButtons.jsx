@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function NavbarButtons({ link }) {
-  console.log(link);
   return (
     <Link
       to={link.to}

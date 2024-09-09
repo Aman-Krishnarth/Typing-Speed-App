@@ -23,7 +23,6 @@ function Login() {
 
   async function handleFormSubmit(e) {
     e.preventDefault();
-    console.log(email, password);
 
     toast.warn("Trying to login user", {
       position: "top-right",
@@ -42,9 +41,6 @@ function Login() {
         password,
       })
       .then((res) => {
-        console.log("LOGIN KE POST KA RES");
-        console.log(res);
-
         const { success, message, token } = res.data;
 
         if (success) {
@@ -77,7 +73,7 @@ function Login() {
         }
       })
       .catch((err) => {
-        console.log("LOGIN KE POST KA ERROR");
+        console.log("LOGIN POST ERROR");
       });
 
     setEmail("");
