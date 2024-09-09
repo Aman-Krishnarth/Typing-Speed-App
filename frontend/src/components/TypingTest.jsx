@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import randomParagraph from "random-paragraph";
 import { toast } from "react-toastify";
+import "./TypingTest.css"
 
 function TypingTest() {
   const [p, setP] = useState([
@@ -102,10 +103,14 @@ function TypingTest() {
 
   function handleChange(e) {
     console.log("change hua hai bro");
-    console.log(e.target.value);
+    console.log(e.key);
+    // console.log(e.target.value)
 
     const characters = charRefs.current;
     let currentChar = charRefs.current[charIndex];
+
+    currentChar.scrollIntoView();
+
     let typedChar = e.target.value.slice(-1);
 
     if (charIndex < characters.length && timeLeft > 0) {
@@ -132,10 +137,10 @@ function TypingTest() {
   return (
     <div className="py-[6%] flex justify-center items-center">
       <div
-        className=" rounded-md p-4 shadow-xl min-h-[60%] w-[90%] flex flex-col justify-around text-[#646669]"
+        className=" rounded-md p-4 shadow-xl min-h-[60%] w-[90%] flex flex-col justify-around text-[#646669] "
         onClick={handleFocusClick}
       >
-        <div className=" p-4 font-semibold">
+        <div className="textDiv p-4 font-semibold h-48">
           <input
             type="text"
             className="opacity-0 -z-50 absolute"
@@ -148,7 +153,7 @@ function TypingTest() {
                 key={index}
                 className={`${
                   index === charIndex
-                    ? "border-b-4 border-blue-500 border-solid"
+                    ? "border-b-4 border-[yellow] border-solid animate-pulse"
                     : ""
                 } ${
                   correctWrong[index] === "right"
@@ -156,7 +161,7 @@ function TypingTest() {
                     : correctWrong[index] === "wrong"
                     ? "text-red-500"
                     : ""
-                }  tracking-widest text-2xl`}
+                }  tracking-widest text-3xl`}
                 ref={(e) => (charRefs.current[index] = e)}
               >
                 {letter}

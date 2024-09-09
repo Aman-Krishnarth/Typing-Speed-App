@@ -25,7 +25,7 @@ router.post("/loginUser",loginValidation,async (req, res) => {
 
 			res.send({
 				success: true,
-				message: "logged in",
+				message: "Logged In",
 				token
 			})
 
