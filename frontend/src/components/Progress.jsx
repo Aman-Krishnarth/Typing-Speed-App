@@ -1,12 +1,37 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { nanoid } from "nanoid";
+import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Progress() {
   const [progressData, setProgressData] = useState([]);
 
-  useEffect(() => {
-    axios
+ console.log("wpm = ", localStorage.getItem("wpm"))
+ console.log("cpm = ", localStorage.getItem("cpm"))
+
+  const makeReq = async () => {
+
+    if (localStorage.getItem("wpm") && localStorage.getItem("cpm")) {
+      await axios
+        .post("https://typing-speed-app-backend.onrender.com/user/update", {
+          token: localStorage.getItem("token"),
+          wpm: localStorage.getItem("wpm"),
+          cpm: localStorage.getItem("cpm"),
+        })
+        .then((res) => {
+          const { success, message } = res.data;
+          console.log(res.data)         
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("update user mein dikkat aa rahi hai");
+        });
+    }
+  };
+
+  const fetchData = async () => {
+    await axios
       .post("https://typing-speed-app-backend.onrender.com/progress", {
         token: localStorage.getItem("token"),
       })
@@ -16,6 +41,18 @@ function Progress() {
       .catch((err) => {
         console.log("PROGRESS AXIOS ERROR");
       });
+  };
+
+  useEffect(() => {
+    async function useEffectCalls() {
+      await makeReq();
+      await fetchData();
+      localStorage.removeItem("wpm")
+      localStorage.removeItem("cpm")
+      
+    }
+
+    useEffectCalls();
   }, []);
 
   return (

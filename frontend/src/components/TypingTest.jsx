@@ -3,6 +3,7 @@ import axios from "axios";
 import randomParagraph from "random-paragraph";
 import { toast } from "react-toastify";
 import "./TypingTest.css";
+import {useNavigate} from "react-router-dom"
 
 function TypingTest() {
   const [p, setP] = useState([
@@ -16,7 +17,7 @@ function TypingTest() {
     p[Math.round(Math.random() * 100) % p.length]
   );
 
-  const maxTime = 30;
+  const maxTime = 5;
 
   const [timeLeft, setTimeLeft] = useState(maxTime);
   const [mistakes, setMistakes] = useState(0);
@@ -27,6 +28,8 @@ function TypingTest() {
   const [correctWrong, setCorrectWrong] = useState([]);
   const charRefs = useRef([]);
   const inputRef = useRef();
+
+  const navigate = useNavigate()
 
   function handleFocusClick() {
     inputRef.current.focus();
@@ -64,38 +67,12 @@ function TypingTest() {
         wpm = wpm < 0 || !wpm || wpm === Infinity ? 0 : wpm;
         setWPM(wpm);
       }, 1000);
-    } else if (timeLeft === 0) {
-      inputRef.current.blur();
-      clearInterval(interval);
-      setIsTyping(false);
-
-      const makeReq = async () => {
-        await axios
-          .post("https://typing-speed-app-backend.onrender.com/user/update", {
-            token: localStorage.getItem("token"),
-            wpm: WPM,
-            cpm: CPM,
-          })
-          .then((res) => {
-            const { success, message } = res.data;
-
-            toast.success(message, {
-              position: "top-right",
-              autoClose: 2000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "colored",
-            });
-          })
-          .catch((err) => {
-            alert("update user mein dikkat aa rahi hai");
-          });
-      };
-      makeReq();
-    }
+    } 
+	else if (timeLeft === 0) {
+		localStorage.setItem("wpm",WPM)
+		localStorage.setItem("cpm",CPM)
+		navigate('/home/progress')
+	}
     return () => {
       clearInterval(interval);
     };
@@ -123,10 +100,14 @@ function TypingTest() {
         correctWrong[charIndex] = "wrong";
       }
       if (charIndex === characters.length - 1) {
-        setIsTyping(false);
+		localStorage.setItem("wpm",WPM)
+		localStorage.setItem("cpm",CPM)
+        navigate("/home/progress")
       }
     } else {
-      setIsTyping(false);
+		localStorage.setItem("wpm",WPM)
+		localStorage.setItem("cpm",CPM)
+		navigate("/home/progress")
     }
   }
 
