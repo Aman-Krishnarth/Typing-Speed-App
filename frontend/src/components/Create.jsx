@@ -75,12 +75,6 @@ function Create() {
 
   return (
     <div className=" h-lvh flex flex-col">
-      <h1 className="font-bold text-3xl text-center pt-10 flex justify-center items-center ">
-        <UserPlus className="inline-block mr-4  h-full w-[15%] sm:w-[10%] md:w-[7%] xl:w-[5%] text-white" />
-
-        <span className="text-white inline-block text-5xl">Login</span>
-      </h1>
-
       <form className=" w-3/4 m-auto items-stretch rounded-md flex flex-col p-4 gap-2">
         <div className="flex  justify-around items-center p-3 my-4 rounded-xl bg-[#121315]">
           <input
