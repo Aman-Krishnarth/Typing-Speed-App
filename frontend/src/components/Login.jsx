@@ -21,6 +21,23 @@ function Login() {
     }
   }, []);
 
+  useEffect(() => {
+    async function runBackend() {
+      await axios
+        .post("https://typing-speed-app-backend.onrender.com/user/loginUser", {
+          email,
+          password,
+        })
+        .then((res) => {
+          console.log("BACKEND RUNNING")
+        })
+        .catch((err) => {
+          console.log("LOGIN POST ERROR");
+        });
+    }
+    runBackend();
+  }, []);
+
   async function handleFormSubmit(e) {
     e.preventDefault();
 
