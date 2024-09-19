@@ -26,7 +26,7 @@ function Create() {
     });
 
     await axios
-      .post("https://typing-speed-app-backend.onrender.com/user/createUser", {
+      .post("https://typing-speed-app-backend.vercel.app/user/createUser", {
         username,
         email,
         password,

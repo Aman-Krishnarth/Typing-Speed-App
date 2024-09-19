@@ -1,7 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import axios from "axios";
-import randomParagraph from "random-paragraph";
-import { toast } from "react-toastify";
 import "./TypingTest.css";
 import {useNavigate} from "react-router-dom"
 

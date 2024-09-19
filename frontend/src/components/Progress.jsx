@@ -14,7 +14,7 @@ function Progress() {
 
     if (localStorage.getItem("wpm") && localStorage.getItem("cpm")) {
       await axios
-        .post("https://typing-speed-app-backend.onrender.com/user/update", {
+        .post("https://typing-speed-app-backend.vercel.app/user/update", {
           token: localStorage.getItem("token"),
           wpm: localStorage.getItem("wpm"),
           cpm: localStorage.getItem("cpm"),
@@ -32,7 +32,7 @@ function Progress() {
 
   const fetchData = async () => {
     await axios
-      .post("https://typing-speed-app-backend.onrender.com/progress", {
+      .post("https://typing-speed-app-backend.vercel.app/progress", {
         token: localStorage.getItem("token"),
       })
       .then((res) => {
